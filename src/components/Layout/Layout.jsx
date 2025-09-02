@@ -53,6 +53,8 @@ const Layout = ({ children }) => {
 
   // Handle theme changes
   useEffect(() => {
+    if (!theme) return
+    
     measureOperation('themeChange', () => {
       const root = document.documentElement
       if (theme.mode === 'dark') {
@@ -61,7 +63,7 @@ const Layout = ({ children }) => {
         root.classList.remove('dark')
       }
     })
-  }, [theme.mode, measureOperation])
+  }, [theme, measureOperation])
 
   // Handle route changes with analytics
   useEffect(() => {
