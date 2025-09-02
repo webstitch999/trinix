@@ -11,7 +11,8 @@ import {
   Shield, 
   MapPin,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  MessageSquare
 } from 'lucide-react'
 import { useSearch, useVenues } from '../../store/store'
 import { useDebounce } from '../../hooks'
