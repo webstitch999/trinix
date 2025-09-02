@@ -1,3 +1,8 @@
 export { useLocalStorage } from './useLocalStorage'
 export { useIntersectionObserver } from './useIntersectionObserver'
 export { useDebounce } from './useDebounce'
+export { usePerformance, useWebVitals } from './usePerformance'
+export { useKeyboardShortcuts } from './useKeyboardShortcuts'
+export { useMediaQuery } from './useMediaQuery'
+export { useScrollPosition } from './useScrollPosition'
+export { useClickOutside } from './useClickOutside'

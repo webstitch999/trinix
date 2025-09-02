@@ -5,51 +5,79 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import SupportWidget from '../UI/SupportWidget'
 import ThemeToggle from '../UI/ThemeToggle'
-import { useTheme, useUI } from '../../store/store'
-import { useLocalStorage } from '../../hooks'
+import AccessibilityHelper from '../UI/AccessibilityHelper'
+import PerformanceMonitor from '../UI/PerformanceMonitor'
+import ToastContainer from '../UI/Toast'
+import { useTheme, useUI, useAnalytics } from '../../store/store'
+import { useLocalStorage, usePerformance, useWebVitals } from '../../hooks'
 
 const Layout = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [toasts, setToasts] = useState([])
   const location = useLocation()
   const { theme } = useTheme()
-  const { sidebarOpen, toggleSidebar } = useUI()
+  const { sidebarOpen, toggleSidebar, notifications } = useUI()
+  const { trackPageView } = useAnalytics()
   const [lastPath, setLastPath] = useLocalStorage('last-path', '/')
+  
+  // Performance monitoring
+  const { measureOperation } = usePerformance('Layout')
+  useWebVitals()
 
-  // Handle scroll effect
+  // Handle scroll effect with performance optimization
   const handleScroll = useCallback(() => {
     const scrolled = window.scrollY > 50
-    setIsScrolled(scrolled)
-  }, [])
+    if (scrolled !== isScrolled) {
+      setIsScrolled(scrolled)
+    }
+  }, [isScrolled])
+
+  // Throttled scroll handler
+  useEffect(() => {
+    let ticking = false
+    
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', throttledScroll, { passive: true })
+    return () => window.removeEventListener('scroll', throttledScroll)
+  }, [handleScroll])
 
   // Handle theme changes
   useEffect(() => {
-    const root = document.documentElement
-    if (theme.mode === 'dark') {
-      root.classList.add('dark')
-    } else {
-      root.classList.remove('dark')
-    }
-  }, [theme.mode])
+    measureOperation('themeChange', () => {
+      const root = document.documentElement
+      if (theme.mode === 'dark') {
+        root.classList.add('dark')
+      } else {
+        root.classList.remove('dark')
+      }
+    })
+  }, [theme.mode, measureOperation])
 
-  // Handle scroll listener
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [handleScroll])
-
-  // Handle route changes
+  // Handle route changes with analytics
   useEffect(() => {
     setLastPath(location.pathname)
     setIsLoading(true)
     
+    // Track page view
+    trackPageView(location.pathname)
+    
     // Simulate loading time for better UX
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 100)
+    }, 150)
 
     return () => clearTimeout(timer)
-  }, [location.pathname, setLastPath])
+  }, [location.pathname, setLastPath, trackPageView])
 
   // Close sidebar on route change
   useEffect(() => {
@@ -58,18 +86,31 @@ const Layout = ({ children }) => {
     }
   }, [location.pathname, sidebarOpen, toggleSidebar])
 
-  // Handle keyboard shortcuts
+  // Enhanced keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Ctrl/Cmd + K for search (future feature)
+      // Global shortcuts
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault()
-        // TODO: Open search modal
+        // Search modal will be handled by Navbar
       }
       
-      // Escape to close sidebar
       if (e.key === 'Escape' && sidebarOpen) {
         toggleSidebar()
+      }
+
+      // Accessibility shortcuts
+      if (e.altKey && e.key === 'h') {
+        e.preventDefault()
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+
+      if (e.altKey && e.key === 'm') {
+        e.preventDefault()
+        const mainContent = document.getElementById('main-content')
+        if (mainContent) {
+          mainContent.focus()
+        }
       }
     }
 
@@ -77,35 +118,87 @@ const Layout = ({ children }) => {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [sidebarOpen, toggleSidebar])
 
+  // Toast management
+  const addToast = useCallback((toast) => {
+    const id = Date.now().toString()
+    const newToast = {
+      id,
+      type: 'info',
+      duration: 5000,
+      ...toast
+    }
+    setToasts(prev => [...prev, newToast])
+  }, [])
+
+  const removeToast = useCallback((id) => {
+    setToasts(prev => prev.filter(toast => toast.id !== id))
+  }, [])
+
+  // Convert store notifications to toasts
+  useEffect(() => {
+    const unreadNotifications = notifications.filter(n => !n.read)
+    if (unreadNotifications.length > 0) {
+      const latestNotification = unreadNotifications[0]
+      if (latestNotification && !toasts.find(t => t.id === latestNotification.id)) {
+        addToast({
+          id: latestNotification.id,
+          type: latestNotification.type,
+          title: latestNotification.title,
+          message: latestNotification.message,
+          duration: 4000
+        })
+      }
+    }
+  }, [notifications, toasts, addToast])
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      {/* Skip to main content for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-6 py-3 rounded-xl z-50 font-medium shadow-lg focus:shadow-xl transition-all duration-200"
+      >
+        Skip to main content
+      </a>
+
       {/* Navbar */}
       <Navbar />
 
       {/* Main Content */}
-      <main className="flex-1 pt-20">
+      <main id="main-content" className="flex-1 pt-20" tabIndex="-1">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ 
-              duration: 0.3,
+              duration: 0.2,
               ease: "easeInOut"
             }}
             className="relative"
           >
-            {/* Loading overlay */}
+            {/* Loading overlay with enhanced animation */}
             <AnimatePresence>
               {isLoading && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex items-center justify-center"
+                  className="absolute inset-0 bg-white/90 backdrop-blur-sm z-10 flex items-center justify-center"
                 >
-                  <div className="w-8 h-8 border-2 border-neutral-300 border-t-primary-500 rounded-full animate-spin"></div>
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.1, 1],
+                      rotate: [0, 180, 360]
+                    }}
+                    transition={{ 
+                      duration: 1,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="w-8 h-8 border-2 border-neutral-300 border-t-primary-500 rounded-full"
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -121,6 +214,11 @@ const Layout = ({ children }) => {
       {/* Floating Elements */}
       <SupportWidget />
       <ThemeToggle />
+      <AccessibilityHelper />
+      <PerformanceMonitor />
+
+      {/* Toast Container */}
+      <ToastContainer toasts={toasts} onRemove={removeToast} />
 
       {/* Sidebar Overlay */}
       <AnimatePresence>
@@ -135,23 +233,20 @@ const Layout = ({ children }) => {
         )}
       </AnimatePresence>
 
-      {/* Skip to main content link for accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-500 text-white px-4 py-2 rounded-lg z-50"
-      >
-        Skip to main content
-      </a>
-
-      {/* Main content landmark */}
-      <div id="main-content" className="sr-only">
-        Main content
-      </div>
+      {/* Global Loading Indicator */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            exit={{ scaleX: 0 }}
+            className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 z-50 origin-left"
+            transition={{ duration: 0.3 }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }
 
 export default Layout
-
-
-
