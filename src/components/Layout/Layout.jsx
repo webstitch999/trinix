@@ -19,7 +19,6 @@ const Layout = ({ children }) => {
   const { theme } = useTheme()
   const { sidebarOpen, toggleSidebar, notifications } = useUI()
   const { trackPageView } = useAnalytics()
-  const [lastPath, setLastPath] = useLocalStorage('last-path', '/')
   
   // Performance monitoring
   const { measureOperation } = usePerformance('Layout')
@@ -67,7 +66,6 @@ const Layout = ({ children }) => {
 
   // Handle route changes with analytics
   useEffect(() => {
-    setLastPath(location.pathname)
     setIsLoading(true)
     
     // Track page view
@@ -79,7 +77,7 @@ const Layout = ({ children }) => {
     }, 150)
 
     return () => clearTimeout(timer)
-  }, [location.pathname, setLastPath, trackPageView])
+  }, [location.pathname, trackPageView])
 
   // Close sidebar on route change
   useEffect(() => {
