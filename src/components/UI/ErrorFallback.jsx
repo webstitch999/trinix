@@ -20,7 +20,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg"
+            className="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center shadow-lg"
           >
             <AlertTriangle className="w-10 h-10 text-white" />
           </motion.div>

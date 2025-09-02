@@ -35,10 +35,10 @@ const ResearchSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-display font-bold text-neutral-900 mb-6">
-            Research
+            Research & <span className="bg-gradient-to-r from-indigo-600 to-purple-700 bg-clip-text text-transparent">Innovation</span>
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-            Exploring new ideas and building impactful solutions.
+            Exploring new ideas, building impactful solutions, and fostering global collaborations.
           </p>
         </motion.div>
 
@@ -66,15 +66,24 @@ const ResearchSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="text-center space-y-6"
         >
-          <Link
-            to="/research"
-            className="btn-primary inline-flex items-center gap-2"
-          >
-            <span>Explore Research Portal</span>
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/research"
+              className="btn-primary inline-flex items-center gap-2"
+            >
+              <span>Explore Research Portal</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              to="/collaboration"
+              className="btn-secondary inline-flex items-center gap-2"
+            >
+              <span>Partnership Opportunities</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

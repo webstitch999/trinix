@@ -19,7 +19,8 @@ import {
   Phone,
   Shield,
   Calendar,
-  Heart
+  Heart,
+  Handshake
 } from 'lucide-react'
 import { useAuth, useTheme, useUI } from '../../store/store'
 import SearchModal from '../UI/SearchModal'
@@ -154,6 +155,26 @@ const Navbar = () => {
                 </Link>
               ))}
               
+              {/* Collaboration Link */}
+              <Link
+                to="/collaboration"
+                className={`relative flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-200 group ${
+                  location.pathname === '/collaboration' 
+                    ? 'text-primary-600 bg-primary-50' 
+                    : 'text-neutral-600 hover:text-primary-600 hover:bg-neutral-50'
+                }`}
+              >
+                <Handshake className="w-4 h-4" />
+                <span>Collaborate</span>
+                {location.pathname === '/collaboration' && (
+                  <motion.div
+                    layoutId="navbar-indicator"
+                    className="absolute inset-0 bg-primary-100 rounded-xl -z-10"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </Link>
+              
               {/* Products Dropdown */}
               <div className="relative group">
                 <button className="flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 transition-all duration-200">
@@ -161,15 +182,30 @@ const Navbar = () => {
                   <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
                 </button>
                 
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-neutral-200/50 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2">
+                <div className="absolute top-full left-0 mt-2 w-72 bg-white/95 backdrop-blur-xl border border-neutral-200/50 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-3">
                   {productItems.map((product) => (
                     <Link
                       key={product.name}
                       to={product.path}
-                      className="flex items-center gap-3 p-3 rounded-xl hover:bg-neutral-50 transition-colors duration-200"
+                      className="flex items-center gap-4 p-4 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-secondary-50 transition-all duration-200 group/item"
                     >
-                      <product.icon className={`w-5 h-5 ${product.color}`} />
-                      <span className="font-medium text-neutral-700">{product.name}</span>
+                      <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${
+                        product.name === 'Eventify' ? 'from-purple-500 to-pink-500' :
+                        product.name === 'SOS' ? 'from-red-500 to-orange-500' :
+                        'from-green-500 to-blue-500'
+                      } flex items-center justify-center shadow-lg group-hover/item:scale-110 transition-transform duration-200`}>
+                        <product.icon className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <div className="font-semibold text-neutral-800 group-hover/item:text-primary-600 transition-colors">
+                          {product.name}
+                        </div>
+                        <div className="text-xs text-neutral-600">
+                          {product.name === 'Eventify' ? 'Event Management Platform' :
+                           product.name === 'SOS' ? 'Emergency Response System' :
+                           'Healthcare Provider Network'}
+                        </div>
+                      </div>
                     </Link>
                   ))}
                 </div>
@@ -344,16 +380,42 @@ const Navbar = () => {
                     </Link>
                   ))}
                   
+                  {/* Mobile Collaboration Link */}
+                  <Link
+                    to="/collaboration"
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+                      location.pathname === '/collaboration' 
+                        ? 'text-primary-600 bg-primary-50 font-semibold' 
+                        : 'text-neutral-600 hover:text-primary-600 hover:bg-neutral-50'
+                    }`}
+                  >
+                    <Handshake className="w-5 h-5" />
+                    <span>Collaborate</span>
+                  </Link>
+                  
                   <div className="px-4 py-2">
                     <div className="text-sm font-semibold text-neutral-500 mb-2">Products</div>
                     {productItems.map((product) => (
                       <Link
                         key={product.name}
                         to={product.path}
-                        className="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-neutral-50 transition-colors duration-200"
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gradient-to-r hover:from-primary-50 hover:to-secondary-50 transition-all duration-200"
                       >
-                        <product.icon className={`w-4 h-4 ${product.color}`} />
-                        <span className="text-neutral-600">{product.name}</span>
+                        <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${
+                          product.name === 'Eventify' ? 'from-purple-500 to-pink-500' :
+                          product.name === 'SOS' ? 'from-red-500 to-orange-500' :
+                          'from-green-500 to-blue-500'
+                        } flex items-center justify-center`}>
+                          <product.icon className="w-4 h-4 text-white" />
+                        </div>
+                        <div>
+                          <div className="text-neutral-700 font-medium">{product.name}</div>
+                          <div className="text-xs text-neutral-500">
+                            {product.name === 'Eventify' ? 'Events & Venues' :
+                             product.name === 'SOS' ? 'Emergency Response' :
+                             'Healthcare Network'}
+                          </div>
+                        </div>
                       </Link>
                     ))}
                   </div>

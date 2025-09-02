@@ -280,7 +280,7 @@ const SOS = () => {
             <AlertTriangle className="w-12 h-12 text-white" />
           </div>
           <h1 className="text-5xl lg:text-7xl font-display font-bold text-white mb-6">
-            Sankatmochan Outreach Service <span className="gradient-text">(SOS)</span>
+            Sankatmochan Outreach Service <span className="bg-gradient-to-r from-rose-400 to-red-500 bg-clip-text text-transparent">(SOS)</span>
           </h1>
           <p className="text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto mb-8 leading-relaxed">
             Empowering communities, enabling transparency, and ensuring rapid, verified emergency response.
@@ -302,7 +302,7 @@ const SOS = () => {
         >
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-6">
-              Software <span className="gradient-text">Features</span>
+              Software <span className="bg-gradient-to-r from-rose-400 to-red-500 bg-clip-text text-transparent">Features</span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Five core software segments working together to create a comprehensive emergency response ecosystem.
@@ -466,7 +466,7 @@ const SOS = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-6">
-              Complete <span className="gradient-text">Workflow</span>
+              Complete <span className="bg-gradient-to-r from-rose-400 to-red-500 bg-clip-text text-transparent">Workflow</span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               End-to-end emergency response process from trigger to resolution
@@ -507,7 +507,7 @@ const SOS = () => {
         >
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-6">
-              SOS Smart Bracelet: <span className="gradient-text">Always-On Safety</span>
+              SOS Smart Bracelet: <span className="bg-gradient-to-r from-rose-400 to-red-500 bg-clip-text text-transparent">Always-On Safety</span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
               Our innovative hardware extension ensures safety even in low-connectivity or phone-less contexts, 
@@ -607,7 +607,7 @@ const SOS = () => {
         >
           <div className="glass rounded-2xl p-12">
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-6">
-              Join the <span className="gradient-text">Mission</span>
+              Join the <span className="bg-gradient-to-r from-rose-400 to-red-500 bg-clip-text text-transparent">Mission</span>
             </h2>
             <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto">
               Be part of the solution. Whether you're a volunteer, NGO, supporter, or someone who believes 

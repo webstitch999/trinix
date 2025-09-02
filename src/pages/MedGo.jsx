@@ -87,7 +87,7 @@ const MedGo = () => {
             <Heart className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-5xl lg:text-6xl font-display font-bold text-white mb-6">
-            MedGo <span className="gradient-text">Healthcare</span>
+            MedGo <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">Healthcare</span>
           </h1>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Connect with top healthcare providers, book appointments instantly, 
@@ -104,7 +104,7 @@ const MedGo = () => {
         >
           <div className="space-y-6">
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-white">
-              Healthcare Made <span className="gradient-text">Simple</span>
+              Healthcare Made <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">Simple</span>
             </h2>
             <p className="text-lg text-white/80 leading-relaxed">
               MedGo connects you with verified healthcare professionals, 
@@ -181,7 +181,7 @@ const MedGo = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-white mb-6">
-              Why Choose <span className="gradient-text">MedGo</span>
+              Why Choose <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">MedGo</span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Comprehensive healthcare solutions designed for modern patients.
@@ -216,7 +216,7 @@ const MedGo = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-white mb-6">
-              Medical <span className="gradient-text">Specialties</span>
+              Medical <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">Specialties</span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Access to specialists across all major medical fields.
@@ -247,7 +247,7 @@ const MedGo = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-display font-bold text-white mb-6">
-              How It <span className="gradient-text">Works</span>
+              How It <span className="bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">Works</span>
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Simple three-step process to get the care you need.
@@ -263,14 +263,14 @@ const MedGo = () => {
               <p className="text-white/70">Search for specialists in your area</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white text-2xl font-bold">
                 2
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">Book Appointment</h3>
               <p className="text-white/70">Choose time slot and book instantly</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white text-2xl font-bold">
                 3
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">Get Care</h3>

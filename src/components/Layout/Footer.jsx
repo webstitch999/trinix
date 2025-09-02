@@ -29,6 +29,7 @@ const Footer = () => {
     ],
     resources: [
       { name: 'Research Portal', path: '/research' },
+      { name: 'Collaboration Hub', path: '/collaboration' },
       { name: 'Documentation', path: '/docs' },
       { name: 'API Reference', path: '/api' },
       { name: 'Blog', path: '/blog' },
@@ -157,5 +158,3 @@ const Footer = () => {
 }
 
 export default Footer
-
-

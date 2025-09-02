@@ -29,7 +29,7 @@ const ThemeToggle = () => {
         {/* Main Toggle Button */}
         <motion.button
           onClick={handleToggle}
-          className="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-white"
+          className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-white"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           aria-label={`Switch to ${theme.mode === 'dark' ? 'light' : 'dark'} mode`}

@@ -59,7 +59,7 @@ const CompanyIntro = () => {
                 </div>
                 
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-neutral-900 leading-tight">
-                  About <span className="gradient-text">Trinix</span>
+                  About <span className="bg-gradient-to-r from-indigo-600 to-purple-700 bg-clip-text text-transparent">Trinix</span>
                 </h2>
               </motion.div>
               

@@ -11,7 +11,7 @@ const LoadingSpinner = ({ size = 'md', className = '', variant = 'default' }) =>
 
   const variants = {
     default: {
-      border: 'border-2 border-neutral-300 border-t-primary-500',
+      border: 'border-2 border-neutral-300 border-t-indigo-500',
       animation: 'spin'
     },
     dots: {
@@ -30,7 +30,7 @@ const LoadingSpinner = ({ size = 'md', className = '', variant = 'default' }) =>
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
-            className={`${sizeClasses[size]} bg-primary-500 rounded-full`}
+            className={`${sizeClasses[size]} bg-indigo-500 rounded-full`}
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.7, 1, 0.7]

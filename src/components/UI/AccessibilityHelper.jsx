@@ -90,7 +90,7 @@ const AccessibilityHelper = () => {
       {/* Accessibility Button */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 left-6 z-50 w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-white group"
+        className="fixed bottom-24 left-6 z-50 w-14 h-14 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center text-white group"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ scale: 0, opacity: 0 }}
@@ -124,7 +124,7 @@ const AccessibilityHelper = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
+              <div className="bg-gradient-to-r from-indigo-500 to-blue-600 p-6 text-white">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <Accessibility className="w-6 h-6" />
@@ -147,9 +147,9 @@ const AccessibilityHelper = () => {
                 {accessibilityOptions.map((option) => (
                   <div
                     key={option.key}
-                    className="flex items-start gap-4 p-4 border border-neutral-200 rounded-xl hover:border-blue-300 hover:bg-blue-50 transition-all duration-200"
+                    className="flex items-start gap-4 p-4 border border-neutral-200 rounded-xl hover:border-indigo-300 hover:bg-indigo-50 transition-all duration-200"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg flex items-center justify-center">
                       <option.icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -158,7 +158,7 @@ const AccessibilityHelper = () => {
                         <button
                           onClick={() => toggleSetting(option.key)}
                           className={`relative w-12 h-6 rounded-full transition-colors duration-200 ${
-                            settings[option.key] ? 'bg-blue-500' : 'bg-neutral-300'
+                            settings[option.key] ? 'bg-indigo-500' : 'bg-neutral-300'
                           }`}
                         >
                           <motion.div

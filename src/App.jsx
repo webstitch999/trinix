@@ -29,6 +29,7 @@ const VenueDetails = createLazyComponent(() => import('./pages/VenueDetails'))
 const ListVenue = createLazyComponent(() => import('./pages/ListVenue'))
 const HousePartyHub = createLazyComponent(() => import('./pages/HousePartyHub'))
 const ResearchPortal = createLazyComponent(() => import('./pages/ResearchPortal'))
+const Collaboration = createLazyComponent(() => import('./pages/Collaboration'))
 const Login = createLazyComponent(() => import('./pages/Login'))
 const Dashboard = createLazyComponent(() => import('./pages/Dashboard'))
 const NotFound = createLazyComponent(() => import('./pages/NotFound'))
@@ -77,6 +78,7 @@ function App() {
                   <Route path="/list-venue" element={<ListVenue />} />
                   <Route path="/house-party-hub" element={<HousePartyHub />} />
                   <Route path="/research" element={<ResearchPortal />} />
+                  <Route path="/collaboration" element={<Collaboration />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="*" element={<NotFound />} />

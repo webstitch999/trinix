@@ -8,13 +8,13 @@ const ProjectCards = () => {
       name: 'Eventify',
       description: 'Revolutionary event management platform connecting venues, organizers, and attendees seamlessly with AI-powered recommendations.',
       icon: Calendar,
-      color: 'from-primary-500 to-secondary-500',
-      bgColor: 'from-primary-50 to-secondary-50',
+      color: 'from-violet-500 to-purple-600',
+      bgColor: 'from-violet-50 to-purple-50',
       stats: { venues: '1,250+', events: '3,400+', rating: '4.8', growth: '+25%' },
       features: ['Smart Venue Discovery', 'Instant Booking', 'Event Analytics', 'Payment Integration'],
       path: '/eventify',
       image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      highlights: ['AI-Powered', 'Real-time', 'Secure'],
+      highlights: ['AI-Powered', 'Real-time', 'Premium'],
       metrics: {
         satisfaction: '98%',
         bookings: '15K+',
@@ -25,13 +25,13 @@ const ProjectCards = () => {
       name: 'SOS',
       description: 'Emergency response network ensuring rapid assistance and safety for communities worldwide with advanced hardware integration.',
       icon: Shield,
-      color: 'from-red-500 to-orange-500',
-      bgColor: 'from-red-50 to-orange-50',
+      color: 'from-rose-500 to-red-600',
+      bgColor: 'from-rose-50 to-red-50',
       stats: { response: '< 2min', coverage: '95%', users: '50,000+', growth: '+40%' },
       features: ['Emergency Alerts', 'GPS Tracking', 'First Responder Network', 'Hardware Integration'],
       path: '/sos',
       image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      highlights: ['Life-Saving', '24/7 Active', 'Verified'],
+      highlights: ['Life-Saving', '24/7 Active', 'Trusted'],
       metrics: {
         responseTime: '90s',
         accuracy: '99.2%',
@@ -42,13 +42,13 @@ const ProjectCards = () => {
       name: 'MedGo',
       description: 'Healthcare provider network streamlining medical appointments and patient care with telemedicine capabilities.',
       icon: Heart,
-      color: 'from-green-500 to-blue-500',
-      bgColor: 'from-green-50 to-blue-50',
+      color: 'from-emerald-500 to-teal-600',
+      bgColor: 'from-emerald-50 to-teal-50',
       stats: { doctors: '850+', patients: '25,000+', rating: '4.9', growth: '+35%' },
       features: ['Doctor Booking', 'Health Records', 'Telemedicine', 'Prescription Management'],
       path: '/medgo',
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      highlights: ['Verified Doctors', 'Instant Care', 'Digital Health'],
+      highlights: ['Expert Care', 'Instant Access', 'Secure Health'],
       metrics: {
         appointments: '50K+',
         satisfaction: '97%',
@@ -104,7 +104,7 @@ const ProjectCards = () => {
               <Link to={project.path}>
                 <div className={`relative h-full bg-gradient-to-br ${project.bgColor} rounded-3xl overflow-hidden border border-neutral-200/50 hover:border-primary-300/50 transition-all duration-500 shadow-lg hover:shadow-2xl`}>
                   {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-5">
+                  <div className="absolute inset-0 opacity-3">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.1)_1px,transparent_0)] bg-[length:20px_20px]"></div>
                   </div>
 
@@ -113,7 +113,7 @@ const ProjectCards = () => {
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-500"
+                      className="w-full h-full object-cover opacity-8 group-hover:opacity-15 transition-opacity duration-500"
                     />
                   </div>
 
@@ -130,7 +130,7 @@ const ProjectCards = () => {
                           <Star className="w-4 h-4 fill-current" />
                           <span className="text-sm font-semibold text-neutral-700">{project.stats.rating}</span>
                         </div>
-                        <div className="flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">
+                        <div className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 rounded-full text-xs font-semibold border border-green-200">
                           <TrendingUp className="w-3 h-3" />
                           <span>{project.stats.growth}</span>
                         </div>
@@ -151,7 +151,11 @@ const ProjectCards = () => {
                         {project.highlights.map((highlight, highlightIndex) => (
                           <span 
                             key={highlightIndex}
-                            className="px-3 py-1 bg-white/80 backdrop-blur-sm text-neutral-700 text-xs font-medium rounded-full border border-neutral-200/50"
+                            className={`px-3 py-1 bg-gradient-to-r ${
+                              project.name === 'Eventify' ? 'from-violet-100 to-purple-100 text-violet-700 border-violet-200' :
+                              project.name === 'SOS' ? 'from-rose-100 to-red-100 text-rose-700 border-rose-200' :
+                              'from-emerald-100 to-teal-100 text-emerald-700 border-emerald-200'
+                            } text-xs font-medium rounded-full border`}
                           >
                             {highlight}
                           </span>
@@ -162,7 +166,11 @@ const ProjectCards = () => {
                       <div className="space-y-2 mb-6">
                         {project.features.slice(0, 3).map((feature, featureIndex) => (
                           <div key={featureIndex} className="flex items-center gap-2 text-sm text-neutral-600">
-                            <div className="w-1.5 h-1.5 bg-primary-500 rounded-full"></div>
+                            <div className={`w-1.5 h-1.5 rounded-full ${
+                              project.name === 'Eventify' ? 'bg-violet-500' :
+                              project.name === 'SOS' ? 'bg-rose-500' :
+                              'bg-emerald-500'
+                            }`}></div>
                             <span>{feature}</span>
                           </div>
                         ))}
@@ -170,7 +178,11 @@ const ProjectCards = () => {
                     </div>
 
                     {/* Enhanced Stats */}
-                    <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/50">
+                    <div className={`grid grid-cols-3 gap-4 mb-6 p-4 rounded-2xl border ${
+                      project.name === 'Eventify' ? 'bg-violet-50/80 border-violet-200/50' :
+                      project.name === 'SOS' ? 'bg-rose-50/80 border-rose-200/50' :
+                      'bg-emerald-50/80 border-emerald-200/50'
+                    } backdrop-blur-sm`}>
                       {Object.entries(project.metrics).map(([key, value]) => (
                         <div key={key} className="text-center">
                           <div className="text-lg font-bold text-neutral-900">{value}</div>
@@ -181,10 +193,18 @@ const ProjectCards = () => {
 
                     {/* CTA */}
                     <div className="flex items-center justify-between pt-4 border-t border-neutral-200/50">
-                      <span className="text-primary-600 font-semibold group-hover:text-primary-700 transition-colors">
+                      <span className={`font-semibold transition-colors ${
+                        project.name === 'Eventify' ? 'text-violet-600 group-hover:text-violet-700' :
+                        project.name === 'SOS' ? 'text-rose-600 group-hover:text-rose-700' :
+                        'text-emerald-600 group-hover:text-emerald-700'
+                      }`}>
                         Explore Platform
                       </span>
-                      <ArrowRight className="w-5 h-5 text-primary-600 group-hover:translate-x-1 transition-transform duration-300" />
+                      <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 ${
+                        project.name === 'Eventify' ? 'text-violet-600' :
+                        project.name === 'SOS' ? 'text-rose-600' :
+                        'text-emerald-600'
+                      }`} />
                     </div>
                   </div>
 
@@ -204,7 +224,7 @@ const ProjectCards = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+          <div className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
             <span className="font-semibold">Ready to transform your business?</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </div>

@@ -45,7 +45,7 @@ const Eventify = () => {
             <Calendar className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-5xl lg:text-6xl font-display font-bold text-white mb-6">
-            Eventify
+            <span className="bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">Eventify</span>
           </h1>
           <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Eventify is our event discovery and booking platform, designed to connect users with clubs, 
@@ -60,7 +60,9 @@ const Eventify = () => {
           transition={{ delay: 0.2 }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold text-white text-center mb-12">Key Features</h2>
+          <h2 className="text-3xl font-bold text-white text-center mb-12">
+            <span className="bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">Key Features</span>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((feature, index) => (
               <motion.div
@@ -71,7 +73,7 @@ const Eventify = () => {
                 className="glass rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300"
               >
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center flex-shrink-0">
                     <feature.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -103,15 +105,15 @@ const Eventify = () => {
                   </p>
                   <div className="flex items-center space-x-6 text-white/60">
                     <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-5 h-5 text-green-400" />
+                      <CheckCircle className="w-5 h-5 text-violet-400" />
                       <span>1,250+ Venues</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-5 h-5 text-green-400" />
+                      <CheckCircle className="w-5 h-5 text-violet-400" />
                       <span>3,400+ Events</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <CheckCircle className="w-5 h-5 text-green-400" />
+                      <CheckCircle className="w-5 h-5 text-violet-400" />
                       <span>4.8★ Rating</span>
                     </div>
                   </div>
@@ -123,7 +125,7 @@ const Eventify = () => {
                   alt="Eventify Platform"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-purple-500/20"></div>
               </div>
             </div>
           </div>
@@ -137,7 +139,9 @@ const Eventify = () => {
           className="text-center"
         >
           <div className="glass rounded-2xl p-8 border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready to Get Started?</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Ready to <span className="bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">Get Started</span>?
+            </h3>
             <p className="text-white/80 mb-8 max-w-2xl mx-auto">
               Join the thousands of users who are already discovering amazing events and venues 
               through Eventify. Start your journey today!
@@ -145,14 +149,14 @@ const Eventify = () => {
                          <div className="flex flex-col sm:flex-row gap-4 justify-center">
                <Link
                  to="/login"
-                 className="button-primary inline-flex items-center space-x-2"
+                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-700 text-white font-semibold rounded-2xl hover:from-violet-700 hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
                >
                  <span>Get Started</span>
                  <ArrowRight className="w-5 h-5" />
                </Link>
                <Link
                  to="/projects"
-                 className="button-secondary inline-flex items-center space-x-2"
+                 className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white font-semibold border-2 border-white/20 rounded-2xl hover:bg-white/20 hover:border-white/40 transition-all duration-300"
                >
                  <span>Visit Project</span>
                  <ArrowRight className="w-5 h-5" />

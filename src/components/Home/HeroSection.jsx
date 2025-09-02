@@ -152,7 +152,7 @@ const HeroSection = () => {
             >
               <Link
                 to="/projects"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold rounded-2xl hover:from-primary-700 hover:to-primary-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-700 text-white font-semibold rounded-2xl hover:from-indigo-700 hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <span>Explore Our Work</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -160,7 +160,7 @@ const HeroSection = () => {
               
               <button
                 onClick={() => setIsVideoPlaying(true)}
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-white border-2 border-neutral-200 text-neutral-700 font-semibold rounded-2xl hover:border-primary-300 hover:text-primary-600 transition-all duration-300 shadow-sm hover:shadow-md"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-white border-2 border-neutral-200 text-neutral-700 font-semibold rounded-2xl hover:border-indigo-300 hover:text-indigo-600 transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 <Play className="w-5 h-5" />
                 <span>Watch Demo</span>

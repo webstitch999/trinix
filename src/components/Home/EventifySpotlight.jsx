@@ -23,7 +23,7 @@ const EventifySpotlight = () => {
                 viewport={{ once: true }}
               >
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-neutral-900 leading-tight">
-                  Spotlight: <span className="gradient-text">Eventify</span>
+                  Spotlight: <span className="bg-gradient-to-r from-violet-600 to-purple-700 bg-clip-text text-transparent">Eventify</span>
                 </h2>
               </motion.div>
               
@@ -61,7 +61,7 @@ const EventifySpotlight = () => {
                   viewport={{ once: true }}
                   className="flex items-center gap-4"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-violet-500 to-purple-600 flex items-center justify-center shadow-lg">
                     <feature.icon className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-neutral-700">{feature.text}</span>
@@ -77,7 +77,7 @@ const EventifySpotlight = () => {
             >
               <Link
                 to="/eventify"
-                className="btn-primary inline-flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-700 text-white font-semibold rounded-2xl hover:from-violet-700 hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <span>Start Exploring</span>
                 <ArrowRight className="w-5 h-5" />

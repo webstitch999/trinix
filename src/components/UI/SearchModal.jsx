@@ -33,6 +33,7 @@ const SearchModal = ({ isOpen, onClose }) => {
     { type: 'page', title: 'SOS Emergency', path: '/sos', icon: Shield, description: 'Emergency response system' },
     { type: 'page', title: 'MedGo Healthcare', path: '/medgo', icon: Heart, description: 'Healthcare provider network' },
     { type: 'page', title: 'Research Portal', path: '/research', icon: Sparkles, description: 'Innovation and research hub' },
+    { type: 'page', title: 'Collaboration Hub', path: '/collaboration', icon: MessageSquare, description: 'Partnership opportunities' },
     { type: 'venue', title: 'Grand Plaza Hotel', path: '/venue/1', icon: MapPin, description: 'Luxury hotel venue in Mumbai' },
     { type: 'venue', title: 'Sunset Gardens', path: '/venue/2', icon: MapPin, description: 'Outdoor venue with garden views' },
   ]
