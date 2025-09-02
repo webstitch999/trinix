@@ -101,24 +101,8 @@ const createAppStore = () => {
               search: false,
               notifications: false,
             },
-            notifications: [
-              {
-                id: '1',
-                type: 'success',
-                title: 'Welcome to Trinix!',
-                message: 'Explore our innovative platforms and discover amazing features.',
-                read: false,
-                createdAt: new Date().toISOString()
-              },
-              {
-                id: '2',
-                type: 'info',
-                title: 'New Feature Available',
-                message: 'Check out our enhanced search functionality with AI-powered recommendations.',
-                read: false,
-                createdAt: new Date(Date.now() - 3600000).toISOString()
-              }
-            ],
+            notifications: [],
+            hasShownWelcome: false,
             loadingStates: {
               venues: false,
               bookings: false,
@@ -169,6 +153,30 @@ const createAppStore = () => {
             
             clearAllNotifications: () => set((state) => {
               state.ui.notifications = []
+            }),
+            
+            initializeWelcomeNotifications: () => set((state) => {
+              if (!state.ui.hasShownWelcome) {
+                state.ui.notifications = [
+                  {
+                    id: 'welcome-1',
+                    type: 'success',
+                    title: 'Welcome to Trinix!',
+                    message: 'Explore our innovative platforms and discover amazing features.',
+                    read: false,
+                    createdAt: new Date().toISOString()
+                  },
+                  {
+                    id: 'welcome-2',
+                    type: 'info',
+                    title: 'New Feature Available',
+                    message: 'Check out our enhanced search functionality with AI-powered recommendations.',
+                    read: false,
+                    createdAt: new Date(Date.now() - 3600000).toISOString()
+                  }
+                ]
+                state.ui.hasShownWelcome = true
+              }
             }),
             
             setLoading: (key, value) => set((state) => {

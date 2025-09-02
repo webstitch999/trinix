@@ -8,11 +8,12 @@ import ProjectCards from '../components/Home/ProjectCards'
 import ResearchSection from '../components/Home/ResearchSection'
 import StatsSection from '../components/Home/StatsSection'
 import ResearchBanner from '../components/Home/ResearchBanner'
-import { useStats, useAnalytics } from '../store/store'
+import { useStats, useAnalytics, useUI } from '../store/store'
 import { usePerformance } from '../hooks'
 
 const Home = () => {
   const { updateStats } = useStats()
+  const { initializeWelcomeNotifications } = useUI()
   const { measureOperation } = usePerformance('HomePage')
 
   useEffect(() => {
@@ -25,7 +26,10 @@ const Home = () => {
         usersActive: 12500,
       })
     })
-  }, [updateStats, measureOperation])
+    
+    // Initialize welcome notifications only once
+    initializeWelcomeNotifications()
+  }, [updateStats, measureOperation, initializeWelcomeNotifications])
 
   return (
     <>

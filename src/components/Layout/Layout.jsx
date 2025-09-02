@@ -136,20 +136,24 @@ const Layout = ({ children }) => {
 
   // Convert store notifications to toasts
   useEffect(() => {
-    const unreadNotifications = notifications.filter(n => !n.read)
-    // Only process notifications that haven't been converted to toasts yet
+    // Track which notifications have been converted to toasts
+    const processedNotificationIds = new Set(toasts.map(t => t.id))
+    
+    const unreadNotifications = notifications.filter(n => 
+      !n.read && !processedNotificationIds.has(n.id)
+    )
+    
+    // Only add new notifications as toasts
     unreadNotifications.forEach(notification => {
-      if (!toasts.find(t => t.id === notification.id)) {
-        addToast({
-          id: notification.id,
-          type: notification.type,
-          title: notification.title,
-          message: notification.message,
-          duration: 4000
-        })
-      }
+      addToast({
+        id: notification.id,
+        type: notification.type,
+        title: notification.title,
+        message: notification.message,
+        duration: 4000
+      })
     })
-  }, [notifications, toasts, addToast])
+  }, [notifications, addToast])
 
   return (
     <div className="min-h-screen flex flex-col bg-white">

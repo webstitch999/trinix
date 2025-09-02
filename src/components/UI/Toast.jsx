@@ -27,7 +27,7 @@ const Toast = ({ toast, onRemove }) => {
   const Icon = icons[toast.type] || Info
 
   useEffect(() => {
-    if (toast.duration > 0) {
+    if (toast.duration > 0 && toast.duration !== Infinity) {
       const timer = setTimeout(() => {
         onRemove(toast.id)
       }, toast.duration)
