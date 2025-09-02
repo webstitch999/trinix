@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Play, Star, Sparkles, TrendingUp, Users, Globe } from 'lucide-react'
+import { ArrowRight, Play, Star, Sparkles, TrendingUp, Users, Globe, X } from 'lucide-react'
 
 const HeroSection = () => {
   const [activeProject, setActiveProject] = useState(0)

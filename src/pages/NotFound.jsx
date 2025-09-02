@@ -1,10 +1,16 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { Home } from 'lucide-react'
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen pt-20 flex items-center justify-center">
+    <>
+      <Helmet>
+        <title>Page Not Found - Trinix</title>
+        <meta name="description" content="The page you're looking for doesn't exist. Return to Trinix homepage." />
+      </Helmet>
+      <div className="min-h-screen pt-20 flex items-center justify-center bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -30,6 +36,7 @@ const NotFound = () => {
         </motion.div>
       </div>
     </div>
+    </>
   )
 }
 

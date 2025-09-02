@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { ArrowRight, Calendar, MapPin, Users, Star, CheckCircle } from 'lucide-react'
 
 const Eventify = () => {
@@ -27,7 +28,12 @@ const Eventify = () => {
   ]
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>Eventify - Event Management Platform | Trinix</title>
+        <meta name="description" content="Discover and book amazing venues for your events with Eventify. Connect with venues, organizers, and attendees seamlessly." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -156,6 +162,7 @@ const Eventify = () => {
         </motion.div>
       </div>
     </div>
+    </>
   )
 }
 

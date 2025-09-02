@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { 
   Play, 
   Users, 
@@ -128,7 +129,12 @@ const About = () => {
   ]
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>About Us - Trinix</title>
+        <meta name="description" content="Learn about Trinix's mission, values, and the team behind our innovative technology solutions." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -439,6 +445,7 @@ const About = () => {
         </motion.div>
       </motion.div>
     </div>
+    </>
   )
 }
 

@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import { FileText, Upload } from 'lucide-react'
-import { useStore } from '../../store/store'
+import { useUI } from '../../store/store'
 
 const ResearchBanner = () => {
-  const { openModal } = useStore()
+  const { openModal } = useUI()
 
   return (
     <section className="section-padding bg-neutral-50">

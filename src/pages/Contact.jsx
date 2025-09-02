@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { 
   Mail, 
   Phone, 
@@ -13,11 +14,11 @@ import {
   Building,
   FileText
 } from 'lucide-react'
-import { useStore } from '../store/store'
+import { useUI } from '../store/store'
 import toast from 'react-hot-toast'
 
 const Contact = () => {
-  const { openModal } = useStore()
+  const { openModal } = useUI()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -152,7 +153,12 @@ const Contact = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>Contact Us - Trinix</title>
+        <meta name="description" content="Get in touch with Trinix. Contact our team for support, partnerships, or general inquiries." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -470,6 +476,7 @@ const Contact = () => {
         </motion.div>
       </div>
     </div>
+    </>
   )
 }
 

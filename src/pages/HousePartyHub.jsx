@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { 
   Plus, 
   Search, 
@@ -22,11 +23,12 @@ import {
   List,
   DollarSign
 } from 'lucide-react'
-import { useStore } from '../store/store'
+import { useHouseParties, useAuth } from '../store/store'
 import toast from 'react-hot-toast'
 
 const HousePartyHub = () => {
-  const { houseParties, setHouseParties, user } = useStore()
+  const { items: houseParties, setHouseParties } = useHouseParties()
+  const { user } = useAuth()
   const [searchQuery, setSearchQuery] = useState('')
   const [showCreateParty, setShowCreateParty] = useState(false)
   const [showPartyDetails, setShowPartyDetails] = useState(null)
@@ -146,7 +148,12 @@ const HousePartyHub = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>House Party Hub - Trinix</title>
+        <meta name="description" content="Discover and join amazing house parties. Connect with friends and create unforgettable memories." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -314,6 +321,7 @@ const HousePartyHub = () => {
         )}
       </AnimatePresence>
     </div>
+    </>
   )
 }
 

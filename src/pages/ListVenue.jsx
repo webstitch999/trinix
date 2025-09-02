@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useDropzone } from 'react-dropzone'
+import { Helmet } from 'react-helmet-async'
 import { 
   Upload, 
   X, 
@@ -19,11 +20,11 @@ import {
   Image as ImageIcon,
   Trash2
 } from 'lucide-react'
-import { useStore } from '../store/store'
+import { useVenues } from '../store/store'
 import toast from 'react-hot-toast'
 
 const ListVenue = () => {
-  const { addVenue } = useStore()
+  const { addVenue } = useVenues()
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
     name: '',
@@ -192,7 +193,12 @@ const ListVenue = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>List Your Venue - Trinix</title>
+        <meta name="description" content="List your venue on Eventify and start earning. Simple process to get your venue featured." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -655,6 +661,7 @@ const ListVenue = () => {
         )}
       </AnimatePresence>
     </div>
+    </>
   )
 }
 

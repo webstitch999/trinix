@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { 
   MapPin, 
   Users, 
@@ -25,12 +26,13 @@ import {
   Download,
   BookOpen
 } from 'lucide-react'
-import { useStore } from '../store/store'
+import { useVenues, useBookings } from '../store/store'
 import toast from 'react-hot-toast'
 
 const VenueDetails = () => {
   const { id } = useParams()
-  const { venues, addFavorite, isFavorite, addBooking } = useStore()
+  const { addFavorite, isFavorite } = useVenues()
+  const { addBooking } = useBookings()
   const [venue, setVenue] = useState(null)
   const [selectedImage, setSelectedImage] = useState(0)
   const [showGallery, setShowGallery] = useState(false)
@@ -156,7 +158,12 @@ const VenueDetails = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>{venue ? `${venue.name} - Venue Details` : 'Venue Details'} - Trinix</title>
+        <meta name="description" content={venue ? `Book ${venue.name} for your next event. ${venue.description}` : 'Venue details and booking information.'} />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Back Button */}
         <motion.div
@@ -674,6 +681,7 @@ const VenueDetails = () => {
         )}
       </AnimatePresence>
     </div>
+    </>
   )
 }
 

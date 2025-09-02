@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { 
   Heart, 
   Stethoscope, 
@@ -13,10 +14,11 @@ import {
   MessageCircle,
   Phone
 } from 'lucide-react'
-import { useStore } from '../store/store'
+import { useUI } from '../store/store'
+import toast from 'react-hot-toast'
 
 const MedGo = () => {
-  const { openModal } = useStore()
+  const { openModal } = useUI()
   const [email, setEmail] = useState('')
 
   const features = [
@@ -68,7 +70,12 @@ const MedGo = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>MedGo - Healthcare Platform | Trinix</title>
+        <meta name="description" content="Connect with top healthcare providers and book appointments instantly with MedGo. Your health, simplified." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -309,6 +316,7 @@ const MedGo = () => {
         </motion.div>
       </div>
     </div>
+    </>
   )
 }
 

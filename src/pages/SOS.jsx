@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { 
   AlertTriangle, 
   Phone, 
@@ -262,7 +263,12 @@ const SOS = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>SOS - Emergency Response System | Trinix</title>
+        <meta name="description" content="Sankatmochan Outreach Service (SOS) - Comprehensive emergency response platform with software and hardware solutions." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Hero Section */}
         <motion.div
@@ -650,6 +656,7 @@ const SOS = () => {
         </motion.div>
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { 
   Briefcase, 
   Plus, 
@@ -30,11 +31,11 @@ import {
   Eye,
   EyeOff
 } from 'lucide-react'
-import { useStore } from '../store/store'
+import { useAuth } from '../store/store'
 
 const Dashboard = () => {
   const navigate = useNavigate()
-  const { user, isAuthenticated } = useStore()
+  const { user, isAuthenticated } = useAuth()
 
   // State for different sections
   const [activeSection, setActiveSection] = useState(null)
@@ -366,7 +367,12 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>Dashboard - Trinix</title>
+        <meta name="description" content="Manage your projects, research, and contacts from your Trinix dashboard." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -900,6 +906,7 @@ const Dashboard = () => {
         </AnimatePresence>
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { ArrowRight, Calendar, Heart, Activity } from 'lucide-react'
 
 const Projects = () => {
@@ -31,7 +32,12 @@ const Projects = () => {
   ]
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>Our Projects - Trinix</title>
+        <meta name="description" content="Explore Trinix's innovative projects including Eventify, SOS, and MedGo platforms." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -85,6 +91,7 @@ const Projects = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

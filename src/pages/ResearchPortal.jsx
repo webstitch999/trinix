@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { 
   BookOpen, 
   Code, 
@@ -12,10 +13,10 @@ import {
   FileText,
   Github
 } from 'lucide-react'
-import { useStore } from '../store/store'
+import { useUI } from '../store/store'
 
 const ResearchPortal = () => {
-  const { openModal } = useStore()
+  const { openModal } = useUI()
 
   const researchProjects = [
     {
@@ -78,7 +79,12 @@ const ResearchPortal = () => {
   ]
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Helmet>
+        <title>Research Portal - Trinix</title>
+        <meta name="description" content="Explore cutting-edge research projects and contribute to innovation at Trinix Research Portal." />
+      </Helmet>
+      <div className="min-h-screen pt-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-primary-900">
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -374,6 +380,7 @@ const ResearchPortal = () => {
         </motion.div>
       </div>
     </div>
+    </>
   )
 }
 

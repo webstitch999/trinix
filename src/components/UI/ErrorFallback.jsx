@@ -1,10 +1,15 @@
 import { motion } from 'framer-motion'
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral-50">
+    <>
+      <Helmet>
+        <title>Error - Trinix</title>
+      </Helmet>
+      <div className="min-h-screen flex items-center justify-center bg-neutral-50">
       <div className="container-custom px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -66,6 +71,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => {
         </motion.div>
       </div>
     </div>
+    </>
   )
 }
 

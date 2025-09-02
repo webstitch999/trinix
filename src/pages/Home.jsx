@@ -8,11 +8,11 @@ import ProjectCards from '../components/Home/ProjectCards'
 import ResearchSection from '../components/Home/ResearchSection'
 import StatsSection from '../components/Home/StatsSection'
 import ResearchBanner from '../components/Home/ResearchBanner'
-import { useStore, useAnalytics } from '../store/store'
+import { useStats, useAnalytics } from '../store/store'
 import { usePerformance } from '../hooks'
 
 const Home = () => {
-  const { stats, updateStats } = useStore()
+  const { updateStats } = useStats()
   const { trackPageView } = useAnalytics()
   const { measureOperation } = usePerformance('HomePage')
 
