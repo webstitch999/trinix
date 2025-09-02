@@ -5,6 +5,11 @@ import { useTheme } from '../../store/store'
 const ThemeToggle = () => {
   const { theme, toggle, setSystem } = useTheme()
 
+  // Return null if theme is not yet loaded (during hydration)
+  if (!theme) {
+    return null
+  }
+
   const handleToggle = () => {
     toggle()
   }
