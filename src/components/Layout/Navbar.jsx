@@ -367,8 +367,8 @@ const Navbar = () => {
                             <User className="w-5 h-5 text-white" />
                           </div>
                           <div>
-                            <div className="font-semibold text-neutral-900">{user?.name}</div>
-                            <div className="text-sm text-neutral-500">{user?.email}</div>
+                            <div className="font-semibold text-neutral-900">{user?.name || 'User'}</div>
+                            <div className="text-sm text-neutral-500">{user?.email || 'user@example.com'}</div>
                           </div>
                         </div>
                         
