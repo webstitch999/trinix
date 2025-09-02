@@ -208,23 +208,25 @@ const Navbar = () => {
               </button>
 
               {/* Theme Toggle */}
-              <button
-                onClick={toggle}
-                className="p-2.5 rounded-xl text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 transition-all duration-200"
-                title="Toggle theme"
-              >
-                <motion.div
-                  initial={false}
-                  animate={{ rotate: theme.mode === 'dark' ? 0 : 180 }}
-                  transition={{ duration: 0.3 }}
+              {theme && (
+                <button
+                  onClick={toggle}
+                  className="p-2.5 rounded-xl text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 transition-all duration-200"
+                  title="Toggle theme"
                 >
-                  {theme.mode === 'dark' ? (
-                    <Sun className="w-5 h-5" />
-                  ) : (
-                    <Moon className="w-5 h-5" />
-                  )}
-                </motion.div>
-              </button>
+                  <motion.div
+                    initial={false}
+                    animate={{ rotate: theme.mode === 'dark' ? 0 : 180 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {theme.mode === 'dark' ? (
+                      <Sun className="w-5 h-5" />
+                    ) : (
+                      <Moon className="w-5 h-5" />
+                    )}
+                  </motion.div>
+                </button>
+              )}
 
               {/* Auth Section */}
               {isAuthenticated ? (
