@@ -1,36 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { 
-  Users, 
-  Handshake, 
-  Globe, 
-  Target, 
-  ArrowRight, 
-  Building, 
-  GraduationCap, 
-  Briefcase,
-  Heart,
-  Code,
-  Lightbulb,
-  Star,
-  CheckCircle,
-  Mail,
-  Phone,
-  Calendar,
-  FileText,
-  Award,
-  TrendingUp,
-  Zap,
-  Shield,
-  Rocket,
-  Eye,
-  MessageCircle,
-  Send,
-  X,
-  Plus,
-  ExternalLink
-} from 'lucide-react'
+import { Users, HeartHandshake as Handshake, Globe, Target, ArrowRight, Building, GraduationCap, Briefcase, Heart, Code, Lightbulb, Star, CheckCircle, Mail, Phone, Calendar, FileText, Award, TrendingUp, Zap, Shield, Rocket, Eye, MessageCircle, Send, X, Plus, ExternalLink } from 'lucide-react'
 import { useUI } from '../store/store'
 import toast from 'react-hot-toast'
 

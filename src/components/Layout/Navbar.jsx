@@ -1,27 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Menu, 
-  X, 
-  User, 
-  LogOut, 
-  Search,
-  Bell,
-  Settings,
-  ChevronDown,
-  Sun,
-  Moon,
-  Sparkles,
-  Home,
-  Briefcase,
-  FlaskConical,
-  Phone,
-  Shield,
-  Calendar,
-  Heart,
-  Handshake
-} from 'lucide-react'
+import { Menu, X, User, LogOut, Search, Bell, Settings, ChevronDown, Sun, Moon, Sparkles, Home, Briefcase, FlaskConical, Phone, Shield, Calendar, Heart, HeartHandshake as Handshake } from 'lucide-react'
 import { useAuth, useTheme, useUI } from '../../store/store'
 import SearchModal from '../UI/SearchModal'
 import NotificationCenter from '../UI/NotificationCenter'
