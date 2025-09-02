@@ -1,11 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import { useAnalytics } from '../store/store'
 
 export const usePerformance = (componentName) => {
   const startTime = useRef(performance.now())
+  const hasRecorded = useRef(false)
   const { setPerformance } = useAnalytics()
 
   useEffect(() => {
+    if (hasRecorded.current) return
+    
     const endTime = performance.now()
     const renderTime = endTime - startTime.current
 
@@ -15,9 +18,10 @@ export const usePerformance = (componentName) => {
         timestamp: new Date().toISOString()
       }
     })
+    hasRecorded.current = true
   }, [componentName, setPerformance])
 
-  const measureOperation = (operationName, operation) => {
+  const measureOperation = useCallback((operationName, operation) => {
     const start = performance.now()
     const result = operation()
     const end = performance.now()
@@ -30,7 +34,7 @@ export const usePerformance = (componentName) => {
     })
     
     return result
-  }
+  }, [componentName, setPerformance])
 
   return { measureOperation }
 }
