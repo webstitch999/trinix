@@ -13,13 +13,9 @@ import { usePerformance } from '../hooks'
 
 const Home = () => {
   const { updateStats } = useStats()
-  const { trackPageView } = useAnalytics()
   const { measureOperation } = usePerformance('HomePage')
 
   useEffect(() => {
-    // Track page view
-    trackPageView('home')
-    
     // Initialize stats with realistic data
     measureOperation('statsUpdate', () => {
       updateStats({
@@ -29,7 +25,7 @@ const Home = () => {
         usersActive: 12500,
       })
     })
-  }, [updateStats, trackPageView, measureOperation])
+  }, [updateStats, measureOperation])
 
   return (
     <>
